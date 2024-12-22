@@ -97,7 +97,7 @@ begin
         if rst = '1' then
             vfd_rs <= '0';
             vfd_rw <= '0';
-            vfd_data <= (others => '0');
+            vfd_data <= "00000001";
         elsif rising_edge(clk) then
             case vfd_state is
                 when function_set =>

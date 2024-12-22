@@ -20,16 +20,14 @@
 
 `timescale 1ns/1ns
 
-module new_location_sm (reset, clock, section_loc, total_loc_wire, states_wire);
+module new_location_sm (reset, clock, section_loc, total_loc, states);
 	 
 	 input wire reset;
     input wire clock;
     input wire [3:0] section_loc;
-    output wire [5:0] total_loc_wire;
-    output wire [3:0] states_wire;
-
-	 reg [5:0] total_loc;
-    reg [3:0] states;
+    output reg [5:0] total_loc;
+    output reg [3:0] states;
+	 
     reg [10:0] fstate;
     reg [10:0] reg_fstate;
     localparam st1=0,tt1=1,st2=2,tt2=3,st3=4,tt3=5,st4=6,tt4=7,st5=8,tt5=9,st6=10;

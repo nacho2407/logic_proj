@@ -8,26 +8,7 @@ module stt_name (
         // Initialize the output with spaces
         out_ascii = 128'b0;
 		  
-		  if (section_loc[1] | section_loc[2]) begin
-					out_ascii[127:120] = 8'h20; // 공백
-					out_ascii[119:112] = 8'h20; // 공백
-					out_ascii[111:104] = 8'h20; // 공백
-					out_ascii[103:96]  = 8'h20; // 공백
-					out_ascii[95:88]   = 8'h20; // 공백
-					out_ascii[87:80]   = 8'h20; // 공백
-					out_ascii[79:72]   = 8'h20; // 공백
-					out_ascii[71:64]   = 8'h20; // 공백
-					out_ascii[63:56]   = 8'h20; // 공백
-					out_ascii[55:48]   = 8'h20; // 공백
-					out_ascii[47:40]   = 8'h20; // 공백
-					out_ascii[39:32]   = 8'h20; // 공백
-					out_ascii[31:24]   = 8'h20; // 공백
-					out_ascii[23:16]   = 8'h20; // 공백
-					out_ascii[15:8]    = 8'h20; // 공백
-					out_ascii[7:0]     = 8'h20; // 공
-		  end
-		  else begin
-
+		  
 			  if (total_loc[0] & section_loc[0]) begin
 					out_ascii[127:120] = 8'h4E; // 'N'
 					out_ascii[119:112] = 8'h6F; // 'o'
@@ -132,7 +113,6 @@ module stt_name (
 					out_ascii[23:16]   = 8'h20; // 공백
 					out_ascii[15:8]    = 8'h20; // 공백
 					out_ascii[7:0]     = 8'h20; // 공백
-			  end
 			  end
     end
 

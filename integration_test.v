@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 23:02:14 2024"
+// CREATED		"Sun Dec 22 23:37:42 2024"
 
 module integration_test(
 	clk,
@@ -43,7 +43,6 @@ module integration_test(
 	full_color_red,
 	led_section_loc,
 	seven_seg,
-	states,
 	step_motor,
 	vfd_data
 );
@@ -74,7 +73,6 @@ output wire	[3:0] full_color_green;
 output wire	[3:0] full_color_red;
 output wire	[3:0] led_section_loc;
 output wire	[6:0] seven_seg;
-output wire	[3:0] states;
 output wire	[3:0] step_motor;
 output wire	[7:0] vfd_data;
 
@@ -180,12 +178,13 @@ traffic_light_module	b2v_inst26(
 	.traffic_green(traffic_green));
 
 
-new_location_sm	b2v_inst31(
+new_location_sm	b2v_inst32(
 	.reset(rst),
 	.clock(SYNTHESIZED_WIRE_55),
 	.section_loc(SYNTHESIZED_WIRE_59),
-	.states_wire(states),
-	.total_loc_wire(SYNTHESIZED_WIRE_60));
+	
+	.total_loc(SYNTHESIZED_WIRE_60));
+
 
 
 
