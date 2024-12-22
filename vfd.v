@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 17:15:51 2024"
+// CREATED		"Sun Dec 22 17:32:33 2024"
 
 module vfd(
 	clk,
@@ -51,7 +51,7 @@ stt_name	b2v_inst(
 	.out_ascii(SYNTHESIZED_WIRE_1));
 
 
-text_lcd	b2v_inst2(
+text_lcd	b2v_inst1(
 	.clk(clk),
 	.rst(SYNTHESIZED_WIRE_0),
 	.st_name(SYNTHESIZED_WIRE_1),
