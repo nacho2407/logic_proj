@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 20:27:09 2024"
+// CREATED		"Sun Dec 22 21:44:23 2024"
 
 module vfd(
 	clk,

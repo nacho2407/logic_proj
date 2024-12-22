@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 20:13:33 2024"
+// CREATED		"Sun Dec 22 21:35:47 2024"
 
 module location(
 	clk,
@@ -24,6 +24,7 @@ module location(
 	emerg_stop,
 	cur_spd,
 	stat_melody,
+	s_init,
 	section_loc,
 	total_loc
 );
@@ -35,6 +36,7 @@ input wire	tik;
 input wire	emerg_stop;
 input wire	[3:0] cur_spd;
 output wire	stat_melody;
+output wire	[3:0] s_init;
 output wire	[3:0] section_loc;
 output wire	[5:0] total_loc;
 
@@ -61,6 +63,7 @@ location_sm	b2v_inst(
 	.clock(clk),
 	.station1(section_loc_ALTERA_SYNTHESIZED1),
 	.station0(section_loc_ALTERA_SYNTHESIZED0),
+	.s_init(s_init),
 	.total_loc(total_loc_ALTERA_SYNTHESIZED));
 	defparam	b2v_inst.init = 0;
 	defparam	b2v_inst.st1 = 2;

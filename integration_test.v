@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 20:26:56 2024"
+// CREATED		"Sun Dec 22 21:34:50 2024"
 
 module integration_test(
 	clk,
@@ -42,6 +42,7 @@ module integration_test(
 	full_color_green,
 	full_color_red,
 	led_section_loc,
+	s_init,
 	seven_seg,
 	step_motor,
 	vfd_data
@@ -72,6 +73,7 @@ output wire	[6:0] eight_seg_seven;
 output wire	[3:0] full_color_green;
 output wire	[3:0] full_color_red;
 output wire	[3:0] led_section_loc;
+output wire	[3:0] s_init;
 output wire	[6:0] seven_seg;
 output wire	[3:0] step_motor;
 output wire	[7:0] vfd_data;
@@ -121,6 +123,7 @@ location	b2v_inst(
 	.emerg_stop(SYNTHESIZED_WIRE_54),
 	.cur_spd(SYNTHESIZED_WIRE_55),
 	.stat_melody(SYNTHESIZED_WIRE_34),
+	.s_init(s_init),
 	.section_loc(SYNTHESIZED_WIRE_56),
 	.total_loc(SYNTHESIZED_WIRE_57));
 

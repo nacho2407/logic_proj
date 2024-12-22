@@ -25,7 +25,7 @@ begin
     process(rst, clk)
     begin
         if rst = '1' then
-            vfd_state <= delay;
+            vfd_state <= clear_disp;
             cnt <= 0;
         elsif rising_edge(clk) then
             case vfd_state is
@@ -80,7 +80,7 @@ begin
                     end if;
                 when clear_disp =>
                     if cnt = 1000 then
-                        vfd_state <= function_set;
+                        vfd_state <= delay;
                         cnt <= 0;
                     else
                         cnt <= cnt + 1;
