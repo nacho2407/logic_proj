@@ -39,6 +39,7 @@ module FifteenIterator(
                         out2 <= 0;
                     end
                 end else begin
+                    번 반복 완료 후 비활성화
                     en_active <= 0;
                     out1 <= 0;
                     out2 <= 0;
