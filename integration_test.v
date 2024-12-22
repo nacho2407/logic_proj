@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 18:21:37 2024"
+// CREATED		"Sun Dec 22 18:59:17 2024"
 
 module integration_test(
 	clk,
@@ -37,6 +37,7 @@ module integration_test(
 	vfd_e,
 	vfd_rs,
 	vfd_rw,
+	dbg_tick,
 	eight_seg_digit,
 	eight_seg_seven,
 	full_color_green,
@@ -67,6 +68,7 @@ output wire	traffic_green;
 output wire	vfd_e;
 output wire	vfd_rs;
 output wire	vfd_rw;
+output wire	dbg_tick;
 output wire	[7:0] eight_seg_digit;
 output wire	[6:0] eight_seg_seven;
 output wire	[3:0] full_color_green;
@@ -81,86 +83,82 @@ wire	[7:0] eight_seg_digit_ALTERA_SYNTHESIZED;
 wire	[6:0] eight_seg_seven_ALTERA_SYNTHESIZED;
 wire	[6:0] seven_seg_ALTERA_SYNTHESIZED;
 wire	SYNTHESIZED_WIRE_0;
-wire	SYNTHESIZED_WIRE_52;
-wire	SYNTHESIZED_WIRE_53;
-wire	SYNTHESIZED_WIRE_54;
-wire	SYNTHESIZED_WIRE_55;
-wire	[3:0] SYNTHESIZED_WIRE_56;
-wire	SYNTHESIZED_WIRE_7;
-wire	SYNTHESIZED_WIRE_9;
-wire	[3:0] SYNTHESIZED_WIRE_57;
-wire	[5:0] SYNTHESIZED_WIRE_58;
-wire	SYNTHESIZED_WIRE_15;
-wire	SYNTHESIZED_WIRE_59;
-wire	[1:0] SYNTHESIZED_WIRE_60;
-wire	SYNTHESIZED_WIRE_61;
-wire	SYNTHESIZED_WIRE_22;
-wire	SYNTHESIZED_WIRE_23;
-wire	SYNTHESIZED_WIRE_34;
-wire	SYNTHESIZED_WIRE_35;
-wire	SYNTHESIZED_WIRE_36;
-wire	SYNTHESIZED_WIRE_37;
-wire	SYNTHESIZED_WIRE_38;
-wire	SYNTHESIZED_WIRE_39;
 wire	SYNTHESIZED_WIRE_40;
-wire	SYNTHESIZED_WIRE_43;
-wire	[3:0] SYNTHESIZED_WIRE_45;
+wire	SYNTHESIZED_WIRE_41;
+wire	SYNTHESIZED_WIRE_42;
+wire	[3:0] SYNTHESIZED_WIRE_43;
+wire	SYNTHESIZED_WIRE_5;
+wire	SYNTHESIZED_WIRE_6;
+wire	[3:0] SYNTHESIZED_WIRE_44;
+wire	[5:0] SYNTHESIZED_WIRE_45;
+wire	SYNTHESIZED_WIRE_10;
+wire	SYNTHESIZED_WIRE_46;
+wire	[1:0] SYNTHESIZED_WIRE_47;
+wire	SYNTHESIZED_WIRE_14;
+wire	SYNTHESIZED_WIRE_15;
+wire	SYNTHESIZED_WIRE_24;
+wire	SYNTHESIZED_WIRE_25;
+wire	SYNTHESIZED_WIRE_26;
+wire	SYNTHESIZED_WIRE_27;
+wire	SYNTHESIZED_WIRE_28;
+wire	SYNTHESIZED_WIRE_29;
+wire	SYNTHESIZED_WIRE_30;
+wire	SYNTHESIZED_WIRE_32;
+wire	[3:0] SYNTHESIZED_WIRE_34;
 
-assign	led_power_on = SYNTHESIZED_WIRE_23;
-assign	led_door_open = SYNTHESIZED_WIRE_59;
-assign	led_section_loc = SYNTHESIZED_WIRE_57;
+assign	led_power_on = SYNTHESIZED_WIRE_15;
+assign	led_door_open = SYNTHESIZED_WIRE_46;
+assign	led_section_loc = SYNTHESIZED_WIRE_44;
 
 
 
-assign	SYNTHESIZED_WIRE_53 =  ~rst;
+assign	SYNTHESIZED_WIRE_40 =  ~rst;
 
 
 trigger	b2v_inst(
 	.Din(SYNTHESIZED_WIRE_0),
-	.CLK(SYNTHESIZED_WIRE_52),
-	.rst_n(SYNTHESIZED_WIRE_53),
-	.Dout(SYNTHESIZED_WIRE_54));
+	.CLK(clk),
+	.rst_n(SYNTHESIZED_WIRE_40),
+	.Dout(SYNTHESIZED_WIRE_41));
 
 
 location	b2v_inst1(
 	.rst(rst),
-	.clk(SYNTHESIZED_WIRE_52),
-	.tik(SYNTHESIZED_WIRE_54),
-	.emerg_stop(SYNTHESIZED_WIRE_55),
-	.cur_spd(SYNTHESIZED_WIRE_56),
-	.stat_melody(SYNTHESIZED_WIRE_39),
+	.clk(clk),
+	.tik(SYNTHESIZED_WIRE_41),
+	.emerg_stop(SYNTHESIZED_WIRE_42),
+	.cur_spd(SYNTHESIZED_WIRE_43),
+	.stat_melody(SYNTHESIZED_WIRE_29),
 	
 	
-	.section_loc(SYNTHESIZED_WIRE_57),
-	.total_loc(SYNTHESIZED_WIRE_58));
-
-assign	SYNTHESIZED_WIRE_61 =  ~rst;
+	.section_loc(SYNTHESIZED_WIRE_44),
+	.total_loc(SYNTHESIZED_WIRE_45));
 
 
 full_color_led	b2v_inst12(
-	.under_limit(SYNTHESIZED_WIRE_7),
+	.under_limit(SYNTHESIZED_WIRE_5),
 	.rst(rst),
 	.green(full_color_green),
 	.red(full_color_red));
 
-assign	SYNTHESIZED_WIRE_15 =  ~rst;
+assign	SYNTHESIZED_WIRE_10 =  ~rst;
 
 
-assign	SYNTHESIZED_WIRE_22 =  ~rst;
+assign	SYNTHESIZED_WIRE_14 =  ~rst;
 
 
 StepMotor	b2v_inst18(
-	.clk(SYNTHESIZED_WIRE_52),
-	.rst_n(SYNTHESIZED_WIRE_9),
-	.cur_speed(SYNTHESIZED_WIRE_56),
+	.clk(clk),
+	.rst_n(SYNTHESIZED_WIRE_6),
+	.cur_speed(SYNTHESIZED_WIRE_43),
 	.motor(step_motor));
 
 
 vfd	b2v_inst2(
-	.clk(SYNTHESIZED_WIRE_52),
+	.clk(clk),
 	.rst(rst),
-	.section_loc(SYNTHESIZED_WIRE_57),
-	.total_loc(SYNTHESIZED_WIRE_58),
+	.section_loc(SYNTHESIZED_WIRE_44),
+	.total_loc(SYNTHESIZED_WIRE_45),
 	.vfd_e(vfd_e),
 	.vfd_rs(vfd_rs),
 	.vfd_rw(vfd_rw),
@@ -168,21 +166,21 @@ vfd	b2v_inst2(
 
 
 Engine	b2v_inst20(
-	.clk(SYNTHESIZED_WIRE_52),
-	.rst_n(SYNTHESIZED_WIRE_15),
+	.clk(clk),
+	.rst_n(SYNTHESIZED_WIRE_10),
 	.on_off(key_eng_on_off),
 	.speed_up(key_speed_up),
 	.speed_down(key_speed_down),
-	.door_oc(SYNTHESIZED_WIRE_59),
-	.emerge_stop(SYNTHESIZED_WIRE_55),
-	.led5(SYNTHESIZED_WIRE_23),
+	.door_oc(SYNTHESIZED_WIRE_46),
+	.emerge_stop(SYNTHESIZED_WIRE_42),
+	.led5(SYNTHESIZED_WIRE_15),
 	.led6(led_power_off),
-	.door_close_beep(SYNTHESIZED_WIRE_36),
-	.current_speed(SYNTHESIZED_WIRE_56));
+	.door_close_beep(SYNTHESIZED_WIRE_26),
+	.current_speed(SYNTHESIZED_WIRE_43));
 
 
 traffic_light_module	b2v_inst26(
-	.light(SYNTHESIZED_WIRE_60),
+	.light(SYNTHESIZED_WIRE_47),
 	.traffic_red(traffic_red),
 	.traffic_yellow(traffic_yellow),
 	.traffic_green(traffic_green));
@@ -190,61 +188,53 @@ traffic_light_module	b2v_inst26(
 
 
 
-PNU_CLK_DIV	b2v_inst5(
-	.clk(clk),
-	.rst_n(SYNTHESIZED_WIRE_61),
-	.en(SYNTHESIZED_WIRE_61),
-	.div_clk(SYNTHESIZED_WIRE_52));
-	defparam	b2v_inst5.cnt_num = 1000;
-
-
 Train_Control	b2v_inst6(
-	.clk(SYNTHESIZED_WIRE_52),
-	.rst_n(SYNTHESIZED_WIRE_22),
+	.clk(clk),
+	.rst_n(SYNTHESIZED_WIRE_14),
 	.force_open(dip_force_open),
 	.A_C(dip_ac_on_off),
 	.O_C(key_door_open_close),
-	.eng_on(SYNTHESIZED_WIRE_23),
-	.current_speed(SYNTHESIZED_WIRE_56),
-	.door(SYNTHESIZED_WIRE_59),
-	.door_melody(SYNTHESIZED_WIRE_37),
+	.eng_on(SYNTHESIZED_WIRE_15),
+	.current_speed(SYNTHESIZED_WIRE_43),
+	.door(SYNTHESIZED_WIRE_46),
+	.door_melody(SYNTHESIZED_WIRE_27),
 	.A_C_LED(led_ac_on),
-	.door_beep(SYNTHESIZED_WIRE_38));
+	.door_beep(SYNTHESIZED_WIRE_28));
 
 
 speed_control	b2v_inst7(
-	.clk(SYNTHESIZED_WIRE_52),
+	.clk(clk),
 	.rst(rst),
 	.force_stop(dip_force_stop),
-	.tik(SYNTHESIZED_WIRE_54),
-	.cur_spd(SYNTHESIZED_WIRE_56),
-	.light(SYNTHESIZED_WIRE_60),
-	.section_loc(SYNTHESIZED_WIRE_57),
-	.total_loc(SYNTHESIZED_WIRE_58),
-	.emerg_stop(SYNTHESIZED_WIRE_55),
-	.beep(SYNTHESIZED_WIRE_35),
-	.under_limit(SYNTHESIZED_WIRE_7),
-	.spd_limit(SYNTHESIZED_WIRE_45));
+	.tik(SYNTHESIZED_WIRE_41),
+	.cur_spd(SYNTHESIZED_WIRE_43),
+	.light(SYNTHESIZED_WIRE_47),
+	.section_loc(SYNTHESIZED_WIRE_44),
+	.total_loc(SYNTHESIZED_WIRE_45),
+	.emerg_stop(SYNTHESIZED_WIRE_42),
+	.beep(SYNTHESIZED_WIRE_25),
+	.under_limit(SYNTHESIZED_WIRE_5),
+	.spd_limit(SYNTHESIZED_WIRE_34));
 
 
 PNU_CLK_DIV	b2v_inst8(
-	.clk(SYNTHESIZED_WIRE_52),
-	.rst_n(SYNTHESIZED_WIRE_53),
-	.en(SYNTHESIZED_WIRE_53),
+	.clk(clk),
+	.rst_n(SYNTHESIZED_WIRE_40),
+	.en(SYNTHESIZED_WIRE_40),
 	.div_clk(SYNTHESIZED_WIRE_0));
-	defparam	b2v_inst8.cnt_num = 1000000;
+	defparam	b2v_inst8.cnt_num = 1000;
 
-assign	SYNTHESIZED_WIRE_43 =  ~rst;
+assign	SYNTHESIZED_WIRE_32 =  ~rst;
 
 
-assign	SYNTHESIZED_WIRE_34 = SYNTHESIZED_WIRE_36 | SYNTHESIZED_WIRE_37 | SYNTHESIZED_WIRE_38 | SYNTHESIZED_WIRE_39;
+assign	SYNTHESIZED_WIRE_24 = SYNTHESIZED_WIRE_26 | SYNTHESIZED_WIRE_27 | SYNTHESIZED_WIRE_28 | SYNTHESIZED_WIRE_29;
 
-assign	SYNTHESIZED_WIRE_40 =  ~rst;
+assign	SYNTHESIZED_WIRE_30 =  ~rst;
 
 
 Seven_Segment	b2v_seven_segment(
-	.rst_n(SYNTHESIZED_WIRE_40),
-	.tot_loc(SYNTHESIZED_WIRE_58),
+	.rst_n(SYNTHESIZED_WIRE_30),
+	.tot_loc(SYNTHESIZED_WIRE_45),
 	.a(seven_seg_ALTERA_SYNTHESIZED[0]),
 	.b(seven_seg_ALTERA_SYNTHESIZED[1]),
 	.c(seven_seg_ALTERA_SYNTHESIZED[2]),
@@ -255,10 +245,10 @@ Seven_Segment	b2v_seven_segment(
 
 
 SpeedDisplay	b2v_spd_disp(
-	.clk(SYNTHESIZED_WIRE_52),
-	.rst_n(SYNTHESIZED_WIRE_43),
-	.cur_speed(SYNTHESIZED_WIRE_56),
-	.spd_limit(SYNTHESIZED_WIRE_45),
+	.clk(clk),
+	.rst_n(SYNTHESIZED_WIRE_32),
+	.cur_speed(SYNTHESIZED_WIRE_43),
+	.spd_limit(SYNTHESIZED_WIRE_34),
 	.com8(eight_seg_digit_ALTERA_SYNTHESIZED[7]),
 	.com7(eight_seg_digit_ALTERA_SYNTHESIZED[6]),
 	.com4(eight_seg_digit_ALTERA_SYNTHESIZED[3]),
@@ -275,19 +265,19 @@ SpeedDisplay	b2v_spd_disp(
 	.com2(eight_seg_digit_ALTERA_SYNTHESIZED[1]),
 	.com1(eight_seg_digit_ALTERA_SYNTHESIZED[0]));
 
-assign	SYNTHESIZED_WIRE_9 =  ~rst;
+assign	SYNTHESIZED_WIRE_6 =  ~rst;
 
 
 traffic_light	b2v_traffic_light(
 	.rst(rst),
-	.clk(SYNTHESIZED_WIRE_52),
-	.emerg_stop(SYNTHESIZED_WIRE_55),
-	.tik(SYNTHESIZED_WIRE_54),
-	.door_oc(SYNTHESIZED_WIRE_59),
-	.section_loc(SYNTHESIZED_WIRE_57),
-	.total_loc(SYNTHESIZED_WIRE_58),
+	.clk(clk),
+	.emerg_stop(SYNTHESIZED_WIRE_42),
+	.tik(SYNTHESIZED_WIRE_41),
+	.door_oc(SYNTHESIZED_WIRE_46),
+	.section_loc(SYNTHESIZED_WIRE_44),
+	.total_loc(SYNTHESIZED_WIRE_45),
 	
-	.light(SYNTHESIZED_WIRE_60));
+	.light(SYNTHESIZED_WIRE_47));
 
 assign	eight_seg_digit = eight_seg_digit_ALTERA_SYNTHESIZED;
 assign	eight_seg_seven = eight_seg_seven_ALTERA_SYNTHESIZED;
