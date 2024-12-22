@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 21:44:23 2024"
+// CREATED		"Sun Dec 22 22:11:09 2024"
 
 module vfd(
 	clk,
@@ -38,10 +38,8 @@ output wire	vfd_rs;
 output wire	vfd_rw;
 output wire	[7:0] vfd_data;
 
-wire	SYNTHESIZED_WIRE_5;
+wire	SYNTHESIZED_WIRE_0;
 wire	[127:0] SYNTHESIZED_WIRE_1;
-wire	SYNTHESIZED_WIRE_2;
-wire	SYNTHESIZED_WIRE_3;
 
 
 
@@ -55,18 +53,14 @@ stt_name	b2v_inst(
 
 text_lcd	b2v_inst1(
 	.clk(clk),
-	.rst(SYNTHESIZED_WIRE_5),
+	.rst(SYNTHESIZED_WIRE_0),
 	.st_name(SYNTHESIZED_WIRE_1),
-	.vfd_e(SYNTHESIZED_WIRE_3),
+	.vfd_e(vfd_e),
 	.vfd_rs(vfd_rs),
 	.vfd_rw(vfd_rw),
 	.vfd_data(vfd_data));
 
-assign	vfd_e = SYNTHESIZED_WIRE_2 & SYNTHESIZED_WIRE_3;
-
-assign	SYNTHESIZED_WIRE_2 =  ~SYNTHESIZED_WIRE_5;
-
-assign	SYNTHESIZED_WIRE_5 = section_loc[2] | rst | section_loc[1];
+assign	SYNTHESIZED_WIRE_0 = section_loc[2] | rst | section_loc[1];
 
 
 endmodule
