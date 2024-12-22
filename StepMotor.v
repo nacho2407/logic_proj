@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Thu Dec 12 18:47:36 2024"
+// CREATED		"Sun Dec 22 16:08:51 2024"
 
 module StepMotor(
 	clk,
@@ -41,7 +41,7 @@ MY_CLK_DIV	b2v_inst(
 	.rst_n(rst_n),
 	.speed(cur_speed),
 	.div_clk(SYNTHESIZED_WIRE_0));
-	defparam	b2v_inst.input_num = 1000000;
+	defparam	b2v_inst.input_num = 10000;
 
 
 Ring_Counter	b2v_inst2(

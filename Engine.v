@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Thu Dec 12 18:45:23 2024"
+// CREATED		"Sun Dec 22 16:07:26 2024"
 
 module Engine(
 	on_off,
@@ -45,20 +45,21 @@ output wire	door_close_beep;
 output wire	[3:0] current_speed;
 
 wire	SYNTHESIZED_WIRE_0;
-wire	SYNTHESIZED_WIRE_20;
-wire	SYNTHESIZED_WIRE_2;
-wire	SYNTHESIZED_WIRE_3;
 wire	SYNTHESIZED_WIRE_21;
+wire	SYNTHESIZED_WIRE_22;
+wire	SYNTHESIZED_WIRE_23;
+wire	SYNTHESIZED_WIRE_4;
 wire	SYNTHESIZED_WIRE_5;
 wire	SYNTHESIZED_WIRE_6;
-wire	SYNTHESIZED_WIRE_7;
-wire	SYNTHESIZED_WIRE_22;
+wire	SYNTHESIZED_WIRE_8;
+wire	SYNTHESIZED_WIRE_9;
 wire	SYNTHESIZED_WIRE_10;
-wire	SYNTHESIZED_WIRE_11;
-wire	SYNTHESIZED_WIRE_13;
+wire	SYNTHESIZED_WIRE_12;
+wire	SYNTHESIZED_WIRE_14;
 wire	SYNTHESIZED_WIRE_15;
-wire	SYNTHESIZED_WIRE_18;
+wire	SYNTHESIZED_WIRE_17;
 wire	SYNTHESIZED_WIRE_19;
+wire	SYNTHESIZED_WIRE_20;
 
 assign	led5 = SYNTHESIZED_WIRE_0;
 
@@ -73,68 +74,71 @@ LED	b2v_inst1(
 	.rst_n(rst_n),
 	.LedOut(SYNTHESIZED_WIRE_21));
 
-assign	SYNTHESIZED_WIRE_2 = SYNTHESIZED_WIRE_20 & door_oc;
+assign	SYNTHESIZED_WIRE_20 = SYNTHESIZED_WIRE_21 & SYNTHESIZED_WIRE_22 & speed_down;
+
+assign	SYNTHESIZED_WIRE_4 = SYNTHESIZED_WIRE_23 & door_oc;
 
 
 trigger	b2v_inst12(
-	.Din(SYNTHESIZED_WIRE_2),
+	.Din(SYNTHESIZED_WIRE_4),
 	.CLK(clk),
 	.rst_n(rst_n),
-	.Dout(SYNTHESIZED_WIRE_15));
+	.Dout(SYNTHESIZED_WIRE_17));
 
-assign	SYNTHESIZED_WIRE_10 =  ~door_oc;
+
+FifteenIterator	b2v_inst13(
+	.clk(clk),
+	.rst_n(rst_n),
+	.en(SYNTHESIZED_WIRE_5),
+	.out1(SYNTHESIZED_WIRE_10),
+	.out2(SYNTHESIZED_WIRE_14));
+	defparam	b2v_inst13.CNT_GAP = 50;
+	defparam	b2v_inst13.CNT_NUM_OUT2 = 15;
+
+assign	SYNTHESIZED_WIRE_12 =  ~door_oc;
 
 
 trigger	b2v_inst16(
-	.Din(SYNTHESIZED_WIRE_3),
+	.Din(SYNTHESIZED_WIRE_6),
 	.CLK(clk),
 	.rst_n(rst_n),
 	.Dout(SYNTHESIZED_WIRE_5));
 
-assign	SYNTHESIZED_WIRE_3 = SYNTHESIZED_WIRE_21 & emerge_stop;
-
-
-SixteenIterator	b2v_inst19(
-	.clk(clk),
-	.rst_n(rst_n),
-	.start(SYNTHESIZED_WIRE_5),
-	.out(SYNTHESIZED_WIRE_22));
+assign	SYNTHESIZED_WIRE_6 = SYNTHESIZED_WIRE_21 & emerge_stop;
 
 
 Up_Down_Conter	b2v_inst2(
-	.up(SYNTHESIZED_WIRE_6),
-	.down(SYNTHESIZED_WIRE_7),
+	.up(SYNTHESIZED_WIRE_8),
+	.down(SYNTHESIZED_WIRE_9),
 	.clk(clk),
 	.rst_n(rst_n),
 	.a(current_speed));
 
-assign	SYNTHESIZED_WIRE_11 =  ~SYNTHESIZED_WIRE_22;
+assign	SYNTHESIZED_WIRE_22 =  ~SYNTHESIZED_WIRE_10;
 
-assign	SYNTHESIZED_WIRE_18 = SYNTHESIZED_WIRE_20 & SYNTHESIZED_WIRE_10 & SYNTHESIZED_WIRE_11;
+assign	SYNTHESIZED_WIRE_19 = SYNTHESIZED_WIRE_23 & SYNTHESIZED_WIRE_12 & SYNTHESIZED_WIRE_22;
 
-assign	SYNTHESIZED_WIRE_7 = SYNTHESIZED_WIRE_22 | SYNTHESIZED_WIRE_13;
+assign	SYNTHESIZED_WIRE_9 = SYNTHESIZED_WIRE_14 | SYNTHESIZED_WIRE_15;
 
 assign	SYNTHESIZED_WIRE_0 = rst_n & SYNTHESIZED_WIRE_21;
 
-assign	door_close_beep = rst_n & SYNTHESIZED_WIRE_15;
+assign	door_close_beep = rst_n & SYNTHESIZED_WIRE_17;
 
-assign	SYNTHESIZED_WIRE_20 = SYNTHESIZED_WIRE_21 & speed_up;
-
-assign	SYNTHESIZED_WIRE_19 = SYNTHESIZED_WIRE_21 & speed_down;
+assign	SYNTHESIZED_WIRE_23 = SYNTHESIZED_WIRE_21 & speed_up;
 
 
 trigger	b2v_inst7(
-	.Din(SYNTHESIZED_WIRE_18),
-	.CLK(clk),
-	.rst_n(rst_n),
-	.Dout(SYNTHESIZED_WIRE_6));
-
-
-trigger	b2v_inst8(
 	.Din(SYNTHESIZED_WIRE_19),
 	.CLK(clk),
 	.rst_n(rst_n),
-	.Dout(SYNTHESIZED_WIRE_13));
+	.Dout(SYNTHESIZED_WIRE_8));
+
+
+trigger	b2v_inst8(
+	.Din(SYNTHESIZED_WIRE_20),
+	.CLK(clk),
+	.rst_n(rst_n),
+	.Dout(SYNTHESIZED_WIRE_15));
 
 
 endmodule
