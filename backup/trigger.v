@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:05:46 2024"
+// CREATED		"Sun Dec 22 21:35:07 2024"
 
 module trigger(
 	CLK,

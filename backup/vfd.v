@@ -15,57 +15,52 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:05:46 2024"
+// CREATED		"Sun Dec 22 23:35:27 2024"
 
-module trigger(
-	CLK,
-	Din,
-	rst_n,
-	Dout
+module vfd(
+	clk,
+	rst,
+	section_loc,
+	total_loc,
+	vfd_e,
+	vfd_rs,
+	vfd_rw,
+	vfd_data
 );
 
 
-input wire	CLK;
-input wire	Din;
-input wire	rst_n;
-output wire	Dout;
+input wire	clk;
+input wire	rst;
+input wire	[3:0] section_loc;
+input wire	[5:0] total_loc;
+output wire	vfd_e;
+output wire	vfd_rs;
+output wire	vfd_rw;
+output wire	[7:0] vfd_data;
 
-reg	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_0;
-reg	DFF_inst3;
+wire	[127:0] SYNTHESIZED_WIRE_1;
 
 
 
 
-assign	Dout = SYNTHESIZED_WIRE_1 & SYNTHESIZED_WIRE_0;
+
+stt_name	b2v_inst(
+	.section_loc(section_loc),
+	.total_loc(total_loc),
+	.out_ascii(SYNTHESIZED_WIRE_1));
 
 
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	SYNTHESIZED_WIRE_1 <= 0;
-	end
-else
-	begin
-	SYNTHESIZED_WIRE_1 <= Din;
-	end
-end
+text_lcd	b2v_inst1(
+	.clk(clk),
+	.rst(SYNTHESIZED_WIRE_0),
+	.st_name(SYNTHESIZED_WIRE_1),
+	.vfd_e(vfd_e),
+	.vfd_rs(vfd_rs),
+	.vfd_rw(vfd_rw),
+	.vfd_data(vfd_data));
 
-
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	DFF_inst3 <= 0;
-	end
-else
-	begin
-	DFF_inst3 <= SYNTHESIZED_WIRE_1;
-	end
-end
-
-assign	SYNTHESIZED_WIRE_0 =  ~DFF_inst3;
+assign	SYNTHESIZED_WIRE_0 = section_loc[1] | rst | section_loc[2];
 
 
 endmodule

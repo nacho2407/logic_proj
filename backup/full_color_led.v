@@ -15,57 +15,34 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:05:46 2024"
+// CREATED		"Sun Dec 22 21:35:14 2024"
 
-module trigger(
-	CLK,
-	Din,
-	rst_n,
-	Dout
+module full_color_led(
+	under_limit,
+	rst,
+	green,
+	red
 );
 
 
-input wire	CLK;
-input wire	Din;
-input wire	rst_n;
-output wire	Dout;
+input wire	under_limit;
+input wire	rst;
+output wire	[3:0] green;
+output wire	[3:0] red;
 
-reg	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_0;
-reg	DFF_inst3;
+wire	SYNTHESIZED_WIRE_3;
 
 
 
 
-assign	Dout = SYNTHESIZED_WIRE_1 & SYNTHESIZED_WIRE_0;
+assign	red = {SYNTHESIZED_WIRE_0,SYNTHESIZED_WIRE_0,SYNTHESIZED_WIRE_0,SYNTHESIZED_WIRE_0} & {SYNTHESIZED_WIRE_3,SYNTHESIZED_WIRE_3,SYNTHESIZED_WIRE_3,SYNTHESIZED_WIRE_3};
 
+assign	green = {under_limit,under_limit,under_limit,under_limit} & {SYNTHESIZED_WIRE_3,SYNTHESIZED_WIRE_3,SYNTHESIZED_WIRE_3,SYNTHESIZED_WIRE_3};
 
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	SYNTHESIZED_WIRE_1 <= 0;
-	end
-else
-	begin
-	SYNTHESIZED_WIRE_1 <= Din;
-	end
-end
+assign	SYNTHESIZED_WIRE_3 =  ~rst;
 
-
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	DFF_inst3 <= 0;
-	end
-else
-	begin
-	DFF_inst3 <= SYNTHESIZED_WIRE_1;
-	end
-end
-
-assign	SYNTHESIZED_WIRE_0 =  ~DFF_inst3;
+assign	SYNTHESIZED_WIRE_0 =  ~under_limit;
 
 
 endmodule

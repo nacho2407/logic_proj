@@ -15,7 +15,7 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Sun Dec 22 16:08:51 2024"
+// CREATED		"Mon Dec 23 21:21:21 2024"
 
 module StepMotor(
 	clk,
@@ -36,7 +36,7 @@ wire	SYNTHESIZED_WIRE_0;
 
 
 
-MY_CLK_DIV	b2v_inst(
+MY_CLK_DIV2	b2v_inst(
 	.clk(clk),
 	.rst_n(rst_n),
 	.speed(cur_speed),

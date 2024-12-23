@@ -15,57 +15,60 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:05:46 2024"
+// CREATED		"Thu Dec 12 18:52:45 2024"
 
-module trigger(
-	CLK,
-	Din,
+module count_4(
+	clk,
 	rst_n,
-	Dout
+	Q0,
+	Q1
 );
 
 
-input wire	CLK;
-input wire	Din;
+input wire	clk;
 input wire	rst_n;
-output wire	Dout;
+output wire	Q0;
+output wire	Q1;
 
-reg	SYNTHESIZED_WIRE_1;
+reg	[0:0] result;
 wire	SYNTHESIZED_WIRE_0;
-reg	DFF_inst3;
+wire	SYNTHESIZED_WIRE_1;
+reg	DFF_inst;
+
+assign	Q1 = DFF_inst;
 
 
 
 
-assign	Dout = SYNTHESIZED_WIRE_1 & SYNTHESIZED_WIRE_0;
-
-
-always@(posedge CLK or negedge rst_n)
+always@(posedge clk or negedge rst_n)
 begin
 if (!rst_n)
 	begin
-	SYNTHESIZED_WIRE_1 <= 0;
+	DFF_inst <= 0;
 	end
 else
 	begin
-	SYNTHESIZED_WIRE_1 <= Din;
+	DFF_inst <= SYNTHESIZED_WIRE_0;
 	end
 end
 
 
-always@(posedge CLK or negedge rst_n)
+always@(posedge clk or negedge rst_n)
 begin
 if (!rst_n)
 	begin
-	DFF_inst3 <= 0;
+	result[0] <= 0;
 	end
 else
 	begin
-	DFF_inst3 <= SYNTHESIZED_WIRE_1;
+	result[0] <= SYNTHESIZED_WIRE_1;
 	end
 end
 
-assign	SYNTHESIZED_WIRE_0 =  ~DFF_inst3;
+assign	SYNTHESIZED_WIRE_1 =  ~result;
 
+assign	SYNTHESIZED_WIRE_0 = result ^ DFF_inst;
+
+assign	Q0 = result;
 
 endmodule

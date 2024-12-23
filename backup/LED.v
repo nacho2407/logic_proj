@@ -15,57 +15,43 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:05:46 2024"
+// CREATED		"Thu Dec 12 18:42:48 2024"
 
-module trigger(
+module LED(
 	CLK,
 	Din,
 	rst_n,
-	Dout
+	LedOut
 );
 
 
 input wire	CLK;
 input wire	Din;
 input wire	rst_n;
-output wire	Dout;
+output reg	LedOut;
 
-reg	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_0;
-reg	DFF_inst3;
 
 
 
-
-assign	Dout = SYNTHESIZED_WIRE_1 & SYNTHESIZED_WIRE_0;
 
 
 always@(posedge CLK or negedge rst_n)
 begin
 if (!rst_n)
 	begin
-	SYNTHESIZED_WIRE_1 <= 0;
+	LedOut <= 0;
 	end
 else
-	begin
-	SYNTHESIZED_WIRE_1 <= Din;
-	end
+	LedOut <= LedOut ^ SYNTHESIZED_WIRE_0;
 end
 
 
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	DFF_inst3 <= 0;
-	end
-else
-	begin
-	DFF_inst3 <= SYNTHESIZED_WIRE_1;
-	end
-end
-
-assign	SYNTHESIZED_WIRE_0 =  ~DFF_inst3;
+trigger	b2v_inst4(
+	.Din(Din),
+	.CLK(CLK),
+	.rst_n(rst_n),
+	.Dout(SYNTHESIZED_WIRE_0));
 
 
 endmodule

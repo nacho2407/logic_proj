@@ -15,57 +15,32 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:05:46 2024"
+// CREATED		"Tue Dec 24 03:07:53 2024"
 
-module trigger(
-	CLK,
-	Din,
+module clk_div_test(
+	clk,
 	rst_n,
-	Dout
+	en,
+	div_clk
 );
 
 
-input wire	CLK;
-input wire	Din;
+input wire	clk;
 input wire	rst_n;
-output wire	Dout;
-
-reg	SYNTHESIZED_WIRE_1;
-wire	SYNTHESIZED_WIRE_0;
-reg	DFF_inst3;
+input wire	en;
+output wire	div_clk;
 
 
 
 
-assign	Dout = SYNTHESIZED_WIRE_1 & SYNTHESIZED_WIRE_0;
 
 
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	SYNTHESIZED_WIRE_1 <= 0;
-	end
-else
-	begin
-	SYNTHESIZED_WIRE_1 <= Din;
-	end
-end
-
-
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	DFF_inst3 <= 0;
-	end
-else
-	begin
-	DFF_inst3 <= SYNTHESIZED_WIRE_1;
-	end
-end
-
-assign	SYNTHESIZED_WIRE_0 =  ~DFF_inst3;
+PNU_CLK_DIV	b2v_inst(
+	.clk(clk),
+	.rst_n(rst_n),
+	.en(en),
+	.div_clk(div_clk));
+	defparam	b2v_inst.cnt_num = 1000;
 
 
 endmodule

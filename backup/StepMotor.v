@@ -15,57 +15,38 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:05:46 2024"
+// CREATED		"Sun Dec 22 16:08:51 2024"
 
-module trigger(
-	CLK,
-	Din,
+module StepMotor(
+	clk,
 	rst_n,
-	Dout
+	cur_speed,
+	motor
 );
 
 
-input wire	CLK;
-input wire	Din;
+input wire	clk;
 input wire	rst_n;
-output wire	Dout;
+input wire	[3:0] cur_speed;
+output wire	[3:0] motor;
 
-reg	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_0;
-reg	DFF_inst3;
 
 
 
 
-assign	Dout = SYNTHESIZED_WIRE_1 & SYNTHESIZED_WIRE_0;
+
+MY_CLK_DIV	b2v_inst(
+	.clk(clk),
+	.rst_n(rst_n),
+	.speed(cur_speed),
+	.div_clk(SYNTHESIZED_WIRE_0));
+	defparam	b2v_inst.input_num = 10000;
 
 
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	SYNTHESIZED_WIRE_1 <= 0;
-	end
-else
-	begin
-	SYNTHESIZED_WIRE_1 <= Din;
-	end
-end
-
-
-always@(posedge CLK or negedge rst_n)
-begin
-if (!rst_n)
-	begin
-	DFF_inst3 <= 0;
-	end
-else
-	begin
-	DFF_inst3 <= SYNTHESIZED_WIRE_1;
-	end
-end
-
-assign	SYNTHESIZED_WIRE_0 =  ~DFF_inst3;
+Ring_Counter	b2v_inst2(
+	.clk(SYNTHESIZED_WIRE_0),
+	.ABCD(motor));
 
 
 endmodule

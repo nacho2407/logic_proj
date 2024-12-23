@@ -15,67 +15,65 @@
 
 // PROGRAM		"Quartus Prime"
 // VERSION		"Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
-// CREATED		"Tue Dec 24 03:07:29 2024"
+// CREATED		"Thu Dec 12 18:50:43 2024"
 
-module vfd(
-	clk,
-	rst,
-	section_loc,
-	total_loc,
-	vfd_e,
-	vfd_rs,
-	vfd_rw,
-	vfd_data
+module mx_4bit_2x1(
+	ce,
+	s0,
+	s1,
+	m_out
 );
 
 
-input wire	clk;
-input wire	rst;
-input wire	[3:0] section_loc;
-input wire	[5:0] total_loc;
-output wire	vfd_e;
-output wire	vfd_rs;
-output wire	vfd_rw;
-output wire	[7:0] vfd_data;
+input wire	ce;
+input wire	[3:0] s0;
+input wire	[3:0] s1;
+output wire	[3:0] m_out;
 
+wire	[3:0] l_s0;
+wire	[3:0] l_s1;
+wire	[3:0] m_line;
 wire	SYNTHESIZED_WIRE_0;
-wire	[127:0] SYNTHESIZED_WIRE_1;
+wire	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_2;
 wire	SYNTHESIZED_WIRE_3;
 wire	SYNTHESIZED_WIRE_4;
+wire	SYNTHESIZED_WIRE_5;
+wire	SYNTHESIZED_WIRE_12;
+wire	SYNTHESIZED_WIRE_10;
+wire	SYNTHESIZED_WIRE_11;
 
 
 
 
+assign	SYNTHESIZED_WIRE_11 = l_s1[0] & ce;
 
-stt_name	b2v_inst(
-	.section_loc(section_loc),
-	.total_loc(total_loc),
-	.out_ascii(SYNTHESIZED_WIRE_1));
+assign	SYNTHESIZED_WIRE_1 = l_s1[1] & ce;
 
+assign	m_line[1] = SYNTHESIZED_WIRE_0 | SYNTHESIZED_WIRE_1;
 
-text_lcd	b2v_inst1(
-	.clk(clk),
-	.rst(SYNTHESIZED_WIRE_0),
-	.is_blank(section_loc[1]),
-	.st_name(SYNTHESIZED_WIRE_1),
-	.vfd_e(vfd_e),
-	.vfd_rs(vfd_rs),
-	.vfd_rw(vfd_rw),
-	.vfd_data(vfd_data));
+assign	m_line[2] = SYNTHESIZED_WIRE_2 | SYNTHESIZED_WIRE_3;
 
+assign	m_line[3] = SYNTHESIZED_WIRE_4 | SYNTHESIZED_WIRE_5;
 
-trigger	b2v_inst3(
-	.Din(SYNTHESIZED_WIRE_2),
-	.CLK(clk),
-	.rst_n(SYNTHESIZED_WIRE_3),
-	.Dout(SYNTHESIZED_WIRE_4));
+assign	SYNTHESIZED_WIRE_3 = l_s1[2] & ce;
 
-assign	SYNTHESIZED_WIRE_0 = rst | SYNTHESIZED_WIRE_4;
+assign	SYNTHESIZED_WIRE_5 = l_s1[3] & ce;
 
-assign	SYNTHESIZED_WIRE_2 = section_loc[3] | section_loc[1];
+assign	SYNTHESIZED_WIRE_10 = SYNTHESIZED_WIRE_12 & l_s0[0];
 
-assign	SYNTHESIZED_WIRE_3 =  ~rst;
+assign	SYNTHESIZED_WIRE_0 = SYNTHESIZED_WIRE_12 & l_s0[1];
 
+assign	SYNTHESIZED_WIRE_2 = SYNTHESIZED_WIRE_12 & l_s0[2];
+
+assign	SYNTHESIZED_WIRE_4 = SYNTHESIZED_WIRE_12 & l_s0[3];
+
+assign	SYNTHESIZED_WIRE_12 =  ~ce;
+
+assign	m_line[0] = SYNTHESIZED_WIRE_10 | SYNTHESIZED_WIRE_11;
+
+assign	m_out = m_line;
+assign	l_s0 = s0;
+assign	l_s1 = s1;
 
 endmodule
